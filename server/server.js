@@ -5,7 +5,12 @@ import { connectDB } from './config/database.js';
 import { errorHandler } from './middleware/errorHandler.js';
 
 // Import routes
-
+import authRoutes from './routes/authRoutes.js';
+import busRoutes from './routes/busRoutes.js';
+import routeRoutes from './routes/routeRoutes.js';
+import scheduleRoutes from './routes/scheduleRoutes.js';
+import bookingRoutes from './routes/bookingRoutes.js';
+import trackingRoutes from './routes/trackingRoutes.js';
 
 // Load environment variables
 dotenv.config();
@@ -54,12 +59,12 @@ const startServer = async () => {
     await connectDB();
 
     app.listen(PORT, () => {
-      console.log(`[v0] BusLK backend server running on port ${PORT}`);
-      console.log(`[v0] Environment: ${process.env.NODE_ENV || 'development'}`);
-      console.log(`[v0] API endpoints available at http://localhost:${PORT}/api`);
+      console.log(`BusLK backend server running on port ${PORT}`);
+      console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
+      console.log(`API endpoints available at http://localhost:${PORT}/api`);
     });
   } catch (error) {
-    console.error('[v0] Failed to start server:', error);
+    console.error('Failed to start server:', error);
     process.exit(1);
   }
 };
